@@ -1,69 +1,65 @@
 const THREE = require('./lib/three.min.js')
 
-console.log('Hello World!')
-
-// https://aerotwist.com/tutorials/getting-started-with-three-js/
-// Set the scene size.
-const WIDTH = 400
-const HEIGHT = 300
-
-// Set some camera attributes.
+const WIDTH = window.innerWidth - 10
+const HEIGHT = window.innerHeight - 10
 const VIEW_ANGLE = 45
 const ASPECT = WIDTH / HEIGHT
 const NEAR = 0.1
-const FAR = 10000
+const FAR = 100
 
-// Get the DOM element to attach to
 const container = document.querySelector('#application')
-
-// Create a WebGL renderer, camera
-// and a scene
 const renderer = new THREE.WebGLRenderer()
-const camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR)
-
-const scene = new THREE.Scene()
-
-// Add the camera to the scene.
-scene.add(camera)
-
-// Start the renderer.
 renderer.setSize(WIDTH, HEIGHT)
-
-// Attach the renderer-supplied
-// DOM element.
 container.appendChild(renderer.domElement)
 
-// Set up the sphere vars
-const RADIUS = 50
-const SEGMENTS = 16
-const RINGS = 16
+const camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR)
+camera.position.set(50, 50, 50)
+camera.lookAt(new THREE.Vector3(0, 0, 0))
 
-// create the sphere's material
-const sphereMaterial = new THREE.MeshLambertMaterial({color: 0xCC0000})
+const scene = new THREE.Scene()
+scene.add(camera)
 
-// Create a new mesh with
-// sphere geometry - we will cover
-// the sphereMaterial next!
-const sphere = new THREE.Mesh(new THREE.SphereGeometry(RADIUS, SEGMENTS, RINGS), sphereMaterial)
+let origin = new THREE.Geometry()
+origin.vertices.push(new THREE.Vector3(0, 0, 0))
 
-// Move the Sphere back in Z so we
-// can see it.
-sphere.position.z = -300
+let originMaterial = new THREE.PointCloudMaterial({ size: 1, sizeAttenuation: false, color: 0xFFFFFF })
+let originDot = new THREE.PointCloud(origin, originMaterial)
+scene.add(originDot)
 
-// Finally, add the sphere to the scene.
-scene.add(sphere)
+let xAxis = new THREE.Geometry()
+xAxis.vertices.push(new THREE.Vector3(-5, 0, 0))
+xAxis.vertices.push(new THREE.Vector3(-10, 0, 0))
+xAxis.vertices.push(new THREE.Vector3(-15, 0, 0))
+xAxis.vertices.push(new THREE.Vector3(5, 0, 0))
+xAxis.vertices.push(new THREE.Vector3(10, 0, 0))
+xAxis.vertices.push(new THREE.Vector3(15, 0, 0))
 
-// create a point light
-const pointLight =
-  new THREE.PointLight(0xFFFFFF)
+let xMaterial = new THREE.PointCloudMaterial({ size: 1, sizeAttenuation: false, color: 0xFF0000 })
+let x = new THREE.PointCloud(xAxis, xMaterial)
+scene.add(x)
 
-// set its position
-pointLight.position.x = 10
-pointLight.position.y = 50
-pointLight.position.z = 130
+let yAxis = new THREE.Geometry()
+yAxis.vertices.push(new THREE.Vector3(0, -5, 0))
+yAxis.vertices.push(new THREE.Vector3(0, -10, 0))
+yAxis.vertices.push(new THREE.Vector3(0, -15, 0))
+yAxis.vertices.push(new THREE.Vector3(0, 5, 0))
+yAxis.vertices.push(new THREE.Vector3(0, 10, 0))
+yAxis.vertices.push(new THREE.Vector3(0, 15, 0))
 
-// add to the scene
-scene.add(pointLight)
+let yMaterial = new THREE.PointCloudMaterial({ size: 1, sizeAttenuation: false, color: 0x00FF00 })
+let y = new THREE.PointCloud(yAxis, yMaterial)
+scene.add(y)
+
+let zAxis = new THREE.Geometry()
+zAxis.vertices.push(new THREE.Vector3(0, 0, -5))
+zAxis.vertices.push(new THREE.Vector3(0, 0, -10))
+zAxis.vertices.push(new THREE.Vector3(0, 0, -15))
+zAxis.vertices.push(new THREE.Vector3(0, 0, 5))
+zAxis.vertices.push(new THREE.Vector3(0, 0, 10))
+zAxis.vertices.push(new THREE.Vector3(0, 0, 15))
+
+let zMaterial = new THREE.PointCloudMaterial({ size: 1, sizeAttenuation: false, color: 0x0000FF })
+let z = new THREE.PointCloud(zAxis, zMaterial)
+scene.add(z)
 
 renderer.render(scene, camera)
-
