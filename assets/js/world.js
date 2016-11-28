@@ -10,7 +10,7 @@ class World {
     this.VIEW_ANGLE = 45
     this.ASPECT = this.WIDTH / this.HEIGHT
     this.NEAR = 0.1
-    this.FAR = 1000
+    this.FAR = 100
 
     this.renderer
     this.scene
@@ -47,6 +47,7 @@ class World {
 
     this.objects = new Objects()
     this.scene.add(this.objects.floor())
+    this.scene.add(this.objects.walls())
   }
 
 }
