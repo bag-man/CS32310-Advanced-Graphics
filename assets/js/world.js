@@ -47,7 +47,8 @@ class World {
 
     this.objects = new Objects()
     this.scene.add(this.objects.floor())
-    this.scene.add(this.objects.walls())
+    this.scene.add(this.objects.longWall(28, 52, 17.5, 14))
+    this.scene.add(this.objects.longWall(28, 52, -17.5, 14))
   }
 
 }
