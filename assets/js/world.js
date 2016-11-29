@@ -40,7 +40,7 @@ class World {
 
     // this.camera = new THREE.PerspectiveCamera(this.VIEW_ANGLE, this.ASPECT, this.NEAR, this.FAR)
     this.camera = new THREE.OrthographicCamera(1 / -2, 1 / 2, 1 / 2, 1 / -2, 1, 1000)
-    this.camera.position.set(20, 20, 20)
+    this.camera.position.set(200, 200, 200)
     this.camera.lookAt(0, 0, 0)
 
     this.light = new THREE.PointLight(0xFFFFFF)

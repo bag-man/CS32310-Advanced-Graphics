@@ -8,9 +8,9 @@
 		{
 			"uuid": "EBE444FE-62B4-4966-8516-B7586B24FD92",
 			"type": "BoxBufferGeometry",
-			"width": 1,
-			"height": 1,
-			"depth": 1
+			"width": 3,
+			"height": 3,
+			"depth": 3
 		}],
 	"materials": [
 		{

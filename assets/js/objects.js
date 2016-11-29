@@ -16,9 +16,11 @@ class Objects {
   }
 
   box () {
-    let loader = new THREE.JSONLoader()
+    let loader = new THREE.ObjectLoader()
       , model = loader.parse(boxModel)
-      , box = new THREE.Mesh(model.geometry, model.materials[0])
+      , box = new THREE.Mesh(model.geometry, model.materials)
+
+    box.position.set(0, 3, 0)
 
     return box
   }
