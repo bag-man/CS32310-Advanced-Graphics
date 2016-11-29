@@ -43,12 +43,19 @@ class World {
     this.camera.position.set(20, 20, 20)
     this.camera.lookAt(0, 0, 0)
 
+    this.light = new THREE.PointLight(0xFFFFFF)
+    this.light.position.set(0, 0, 0)
+    this.camera.add(this.light)
+
     this.controls = new OrbitControls(this.camera)
 
     this.objects = new Objects()
     this.scene.add(this.objects.floor())
     this.scene.add(this.objects.longWall(28, 52, 17.5, 14))
     this.scene.add(this.objects.longWall(28, 52, -17.5, 14))
+    this.scene.add(this.objects.shortWall(28, 35, -26, 14))
+    this.scene.add(this.objects.shortWall(28, 35, 26, 14))
+    this.scene.add(this.camera)
   }
 
 }
