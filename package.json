@@ -42,6 +42,7 @@
     "canvas-testbed": "^1.0.4",
     "express": "^4.14.0",
     "jade": "^1.11.0",
+    "json-loader": "^0.5.4",
     "morgan": "^1.7.0",
     "path": "^0.12.7",
     "stylus": "^0.54.5",

@@ -1,4 +1,5 @@
 const THREE = require('three')
+const boxModel = require('json-loader!../objects/model.json')
 
 class Objects {
 
@@ -12,6 +13,14 @@ class Objects {
     this.floorTexture.wrapS = THREE.RepeatWrapping
     this.floorTexture.wrapT = THREE.RepeatWrapping
     this.floorTexture.repeat.set(10, 10)
+  }
+
+  box () {
+    let loader = new THREE.JSONLoader()
+      , model = loader.parse(boxModel)
+      , box = new THREE.Mesh(model.geometry, model.materials[0])
+
+    return box
   }
 
   floor () {
