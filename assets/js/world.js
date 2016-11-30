@@ -1,6 +1,7 @@
 const THREE = require('three')
-const Objects = require('./objects')
+// const Objects = require('./objects')
 const OrbitControls = require('three-orbit-controls')(THREE)
+const baseScene = require('json-loader!../objects/scene.json')
 
 class World {
 
@@ -36,11 +37,12 @@ class World {
     })
     this.renderer.setClearColor(0x444444, 1.0)
 
-    this.scene = new THREE.Scene()
+    let loader = new THREE.ObjectLoader()
+    this.scene = loader.parse(baseScene)
 
-    // this.camera = new THREE.PerspectiveCamera(this.VIEW_ANGLE, this.ASPECT, this.NEAR, this.FAR)
-    this.camera = new THREE.OrthographicCamera(1 / -2, 1 / 2, 1 / 2, 1 / -2, 1, 1000)
-    this.camera.position.set(200, 200, 200)
+    this.camera = new THREE.PerspectiveCamera(this.VIEW_ANGLE, this.ASPECT, this.NEAR, this.FAR)
+    // this.camera = new THREE.OrthographicCamera(1 / -2, 1 / 2, 1 / 2, 1 / -2, 1, 1000)
+    this.camera.position.set(-200, 200, -200)
     this.camera.lookAt(0, 0, 0)
 
     this.light = new THREE.PointLight(0xFFFFFF)
@@ -49,16 +51,16 @@ class World {
 
     this.controls = new OrbitControls(this.camera)
 
-    this.objects = new Objects()
-    this.scene.add(this.objects.floor())
-    this.scene.add(this.objects.longWall(28, 52, -17.5, 14))
-    // this.scene.add(this.objects.longWall(28, 52, 17.5, 14))
-    this.scene.add(this.objects.shortWall(28, 35, -26, 14))
-    // this.scene.add(this.objects.shortWall(28, 35, 26, 14))
-    this.scene.add(this.objects.door())
-    this.scene.add(this.objects.bed())
+    // this.objects = new Objects()
+    // this.scene.add(this.objects.floor())
+    // this.scene.add(this.objects.longWall(28, 52, -17.5, 14))
+    // // this.scene.add(this.objects.longWall(28, 52, 17.5, 14))
+    // this.scene.add(this.objects.shortWall(28, 35, -26, 14))
+    // // this.scene.add(this.objects.shortWall(28, 35, 26, 14))
+    // this.scene.add(this.objects.door())
+    // this.scene.add(this.objects.bed())
 
-    this.scene.add(this.camera)
+    // this.scene.add(this.camera)
   }
 
 }
