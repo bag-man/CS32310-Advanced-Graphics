@@ -1,5 +1,6 @@
 const THREE = require('three')
 const doorModel = require('json-loader!../objects/door.json')
+const bedModel = require('json-loader!../objects/bed.json')
 
 class Objects {
 
@@ -15,7 +16,17 @@ class Objects {
     this.floorTexture.repeat.set(10, 10)
   }
 
-  box () {
+  bed () {
+    let loader = new THREE.ObjectLoader()
+      , model = loader.parse(bedModel)
+      , bed = new THREE.Mesh(model.geometry, model.material)
+
+    bed.position.set(0, 0, 0)
+
+    return bed
+  }
+
+  door () {
     let loader = new THREE.ObjectLoader()
       , model = loader.parse(doorModel)
       , door = new THREE.Mesh(model.geometry, model.material)

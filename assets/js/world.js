@@ -55,7 +55,8 @@ class World {
     // this.scene.add(this.objects.longWall(28, 52, 17.5, 14))
     this.scene.add(this.objects.shortWall(28, 35, -26, 14))
     // this.scene.add(this.objects.shortWall(28, 35, 26, 14))
-    this.scene.add(this.objects.box())
+    this.scene.add(this.objects.door())
+    this.scene.add(this.objects.bed())
 
     this.scene.add(this.camera)
   }
