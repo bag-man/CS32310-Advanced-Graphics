@@ -1,5 +1,5 @@
 const THREE = require('three')
-const boxModel = require('json-loader!../objects/model.json')
+const doorModel = require('json-loader!../objects/door.json')
 
 class Objects {
 
@@ -17,12 +17,12 @@ class Objects {
 
   box () {
     let loader = new THREE.ObjectLoader()
-      , model = loader.parse(boxModel)
-      , box = new THREE.Mesh(model.geometry, model.materials)
+      , model = loader.parse(doorModel)
+      , door = new THREE.Mesh(model.geometry, model.material)
 
-    box.position.set(0, 3, 0)
+    door.position.set(10, 9.5, -26)
 
-    return box
+    return door
   }
 
   floor () {
