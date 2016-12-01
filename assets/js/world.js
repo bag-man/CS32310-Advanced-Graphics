@@ -6,8 +6,8 @@ const baseScene = require('json-loader!../objects/scene.json')
 class World {
 
   constructor () {
-    this.WIDTH = window.offSetWidth
-    this.HEIGHT = window.offSetHeight
+    this.WIDTH = window.innerWidth
+    this.HEIGHT = window.innerHeight
     this.VIEW_ANGLE = 45
     this.ASPECT = this.WIDTH / this.HEIGHT
     this.NEAR = 0.1
@@ -32,10 +32,14 @@ class World {
   }
 
   start (gl) {
-    this.renderer = new THREE.WebGLRenderer({
-      canvas: gl.canvas
-    })
+    this.renderer = new THREE.WebGLRenderer(
+      { canvas: gl.canvas
+      , antialias: true
+      }
+    )
     this.renderer.setClearColor(0x444444, 1.0)
+    this.renderer.shadowMap.enabled = true
+    this.renderer.shadowMap.type = THREE.PSCFSoftShadowMap
 
     let loader = new THREE.ObjectLoader()
     this.scene = loader.parse(baseScene)
@@ -45,9 +49,9 @@ class World {
     this.camera.position.set(-200, 200, -200)
     this.camera.lookAt(0, 0, 0)
 
-    this.light = new THREE.PointLight(0xFFFFFF)
-    this.light.position.set(0, 0, 0)
-    this.camera.add(this.light)
+    // this.light = new THREE.PointLight(0xFFFFFF)
+    // this.light.position.set(0, 0, 0)
+    // this.camera.add(this.light)
 
     this.controls = new OrbitControls(this.camera)
 
