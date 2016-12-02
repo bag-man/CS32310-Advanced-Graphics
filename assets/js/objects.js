@@ -1,6 +1,7 @@
 const THREE = require('three')
 const doorModel = require('json-loader!../objects/door.json')
 const bedModel = require('json-loader!../objects/bed.json')
+const CoffeeMug = require('./mug.js')
 
 class Objects {
 
@@ -14,6 +15,12 @@ class Objects {
     this.floorTexture.wrapS = THREE.RepeatWrapping
     this.floorTexture.wrapT = THREE.RepeatWrapping
     this.floorTexture.repeat.set(10, 10)
+  }
+
+  mug (x, y, z) {
+    let mug = new CoffeeMug()
+    mug.position.set(x, y, z)
+    return mug
   }
 
   bed () {
