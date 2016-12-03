@@ -36,7 +36,7 @@ class CoffeeMug {
     let holes = []
       , triangles
 
-    triangles = THREE.Shape.Utils.triangulateShape(handle.vertices, holes)
+    triangles = THREE.ShapeUtils.triangulateShape(handle.vertices, holes)
 
     for (var i = 0; i < triangles.length; i++) {
       handle.faces.push(new THREE.Face3(triangles[i][0], triangles[i][1], triangles[i][2]))
