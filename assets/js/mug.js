@@ -24,27 +24,23 @@ class CoffeeMug {
 
   handleMesh () {
     let handle = new THREE.Geometry()
-    let material = this.mugMat // new THREE.PointCloudMaterial({ size: 4, sizeAttenuation: false, color: 0xFF0000 })
+      , material = new THREE.PointCloudMaterial({ size: 4, sizeAttenuation: false, color: 0xFF0000 })
 
-    for (let i = 0; i < 4; i += 0.2) {
+    for (let i = 0.4; i < 3; i += 0.2) {
       handle.vertices.push(new THREE.Vector3(i, Math.sin(i) + 0.6, i - 0.5))
       handle.vertices.push(new THREE.Vector3(i, Math.sin(i) - 0.6, i))
       handle.vertices.push(new THREE.Vector3(i + 0.6, Math.sin(i) - 0.6, i - 0.6))
       handle.vertices.push(new THREE.Vector3(i + 0.6, Math.sin(i) - 1.2, i + 0.1))
     }
 
-    let holes = []
-      , triangles
+    // let holes = []
+    //   , triangles = THREE.ShapeUtils.triangulateShape(handle.vertices, holes)
 
-    triangles = THREE.Shape.Utils.triangulateShape(handle.vertices, holes)
+    // for (var i = 0; i < triangles.length; i++) {
+    //   handle.faces.push(new THREE.Face3(triangles[i][0], triangles[i][1], triangles[i][2]))
+    // }
 
-    for (var i = 0; i < triangles.length; i++) {
-      handle.faces.push(new THREE.Face3(triangles[i][0], triangles[i][1], triangles[i][2]))
-    }
-
-    let mesh = new THREE.Mesh(handle, material)
-
-    console.log(222, mesh)
+    let mesh = new THREE.PointCloud(handle, material)
 
     return mesh
 
