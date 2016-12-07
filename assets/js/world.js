@@ -51,8 +51,7 @@ class World {
     this.controls = new OrbitControls(this.camera)
 
     this.objects = new Objects()
-    this.scene.add(this.objects.mug(0, 20, 0))
-    // this.scene.add(this.objects.mug(24, 13, -44))
+    this.scene.add(this.objects.mug(24, 13.4, -44))
 
     // {{{
     // this.camera = new THREE.OrthographicCamera(1 / -2, 1 / 2, 1 / 2, 1 / -2, 1, 1000)

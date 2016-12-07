@@ -13,36 +13,33 @@ class CoffeeMug {
     }
 
     wallsGeo.merge(baseGeo)
+    wallsGeo.merge(this.handleGeometry())
 
     let mesh = new THREE.Mesh(wallsGeo, this.mugMat)
 
     mesh.castShadow = true
 
-    // return mesh
-    return this.handleMesh()
+    return mesh
   }
 
-  handleMesh () {
-    let handle = new THREE.Geometry()
-      , material = new THREE.PointCloudMaterial({ size: 4, sizeAttenuation: false, color: 0xFF0000 })
+  handleGeometry () {
+    let geometry = new THREE.Geometry()
 
     for (let i = 0.4; i < 3; i += 0.2) {
-      handle.vertices.push(new THREE.Vector3(i, Math.sin(i) + 0.6, i - 0.5))
-      handle.vertices.push(new THREE.Vector3(i, Math.sin(i) - 0.6, i))
-      handle.vertices.push(new THREE.Vector3(i + 0.6, Math.sin(i) - 0.6, i - 0.6))
-      handle.vertices.push(new THREE.Vector3(i + 0.6, Math.sin(i) - 1.2, i + 0.1))
+      geometry.vertices.push(new THREE.Vector3(i, Math.sin(i) + 0.6, i - 0.5))
+      geometry.vertices.push(new THREE.Vector3(i, Math.sin(i) - 0.6, i))
+      geometry.vertices.push(new THREE.Vector3(i + 0.6, Math.sin(i) - 0.6, i - 0.6))
+      geometry.vertices.push(new THREE.Vector3(i + 0.6, Math.sin(i) - 1.2, i + 0.1))
     }
 
-    // let holes = []
-    //   , triangles = THREE.ShapeUtils.triangulateShape(handle.vertices, holes)
+    let holes = []
+      , triangles = THREE.ShapeUtils.triangulateShape(geometry.vertices, holes)
 
-    // for (var i = 0; i < triangles.length; i++) {
-    //   handle.faces.push(new THREE.Face3(triangles[i][0], triangles[i][1], triangles[i][2]))
-    // }
+    for (var i = 0; i < triangles.length; i++) {
+      geometry.faces.push(new THREE.Face3(triangles[i][0], triangles[i][1], triangles[i][2]))
+    }
 
-    let mesh = new THREE.PointCloud(handle, material)
-
-    return mesh
+    return geometry
 
   }
 
