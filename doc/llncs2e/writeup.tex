@@ -15,7 +15,7 @@
 \institute{Department of Computer Science,\\ Llandinam Building, Aberystwyth University,\\ Aberystwyth, Ceredigion, SY23 3DB}
 
 \maketitle
-\newpage
+\clearpage
 
 \section{Running the Application}
 Build instructions can be found in the README.md. Or you can view the project online at \href{http://uni.owen.cymru}{uni.owen.cymru}.
@@ -30,7 +30,7 @@ Build instructions can be found in the README.md. Or you can view the project on
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/1.png}
-    \caption{Vertices plotted to show axis}
+    \caption{Vertices plotted to show axis, you may need to zoom in to see the dots.}
     \label{fig:window}
   \end{figure}
 
@@ -47,7 +47,7 @@ Build instructions can be found in the README.md. Or you can view the project on
     \label{fig:window}
   \end{figure}
   
-  Once I had some walls, and floor I added in texture and lighting effects. I used MeshLambertMaterial and some freely available textures that closely matched my actual bedrooms wall and flooring.
+  Once I had some walls, and floor I added in texture and lighting effects. I used MeshLambertMaterial and some freely available textures\cite{textures} that closely matched my actual bedrooms wall and flooring.
 
   \begin{figure}[H]
     \centering
@@ -120,5 +120,16 @@ Build instructions can be found in the README.md. Or you can view the project on
   \end{figure}
 
   Overall I think this project went fairly well. I wish I had more time to have sorted out the handle, and added in some animations, but I do feel pleased to have learned the basics of how to use three.js to create 3D interactive scenes. I think in reality most people would use a 3D editor like blender to create their objects / scene then export it into JSON and just use three.js to make it interactive and accessible via the web. 
+
+  \bibliographystyle{unsrt}
+  \begin{thebibliography}{1}
+    \bibitem{textures}Textures were taken from:
+      \begin{itemize}
+	\item\url{http://carpet.nowblogg.com/carpet-blue-texture/} 
+	\item\url{http://seamless-pixels.blogspot.de/2012/09/free-seamless-stucco-wall-plaster.html}
+	\item\url{http://www.textures.com/category/wooden-doors/33407}
+      \end{itemize}
+
+  \end{thebibliography}
 
 \end{document}
